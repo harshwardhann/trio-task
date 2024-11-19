@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: ConfigMap
 metadata:
   name: mysql-deployment
   labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mysql-container
-          image: harshwardhann/dbapp:latest
+          image: stratcastor/mea21sql:latest
           ports:
             - containerPort: 3306
 ---
