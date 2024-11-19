@@ -1,29 +1,7 @@
-apiVersion: apps/v1
-kind: ConfigMap
-metadata:
-  name: mysql-deployment
-  labels:
-    app: mysql
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mysql
-  template:
-    metadata:
-      labels:
-        app: mysql
-    spec:
-      containers:
-        - name: mysql-container
-          image: stratcastor/mea21sql:latest
-          ports:
-            - containerPort: 3306
----
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-service
+  name: mysql
 spec:
   type: ClusterIP
   selector:
@@ -32,3 +10,16 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  containers:
+    - name: mysql-container
+      image: harshwardhann/dbapp:latest
+      ports:
+        - containerPort: 3306

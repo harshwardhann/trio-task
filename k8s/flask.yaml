@@ -5,7 +5,7 @@ metadata:
   labels:
     app: flask
 spec:
-  replicas: 5
+  replicas: 10
   selector:
     matchLabels:
       app: flask
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: stratcastor/mea21flaskapp:latest
+          image: harshwardhann/flaskapp:latest
           ports:
             - containerPort: 5000
 ---
@@ -30,5 +30,5 @@ spec:
     app: flask
   ports:
     - protocol: TCP
-      port: 80
+      port: 5000
       targetPort: 5000
