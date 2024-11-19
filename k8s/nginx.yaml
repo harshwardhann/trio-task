@@ -9,13 +9,7 @@ data:
       server {
         listen 80;
         location / {
-          proxy_pass http://flask-service:5500;
-        }
-        location /hello {
-          return 200 "Hello World";
-        }
-        location /Brazil {
-          return 200 "Bad at football";
+          proxy_pass http://flask-service:5000;
         }
       }
     }
